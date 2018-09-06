@@ -11,6 +11,7 @@ import (
 )
 
 func init() {
+	// standard logger
 	log.SetOutput(os.Stdout)
 }
 

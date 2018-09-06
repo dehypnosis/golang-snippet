@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"sync/atomic"
+	"time"
 )
 
 var (
@@ -28,10 +30,10 @@ func inc3(label string) {
 
 	for i := 0; i < 100; i++ {
 		v := counter
-		// time.Sleep(100)
+		time.Sleep(1)
+		runtime.Gosched()
 		counter = v + 1
 		atomic.AddInt32(&atomicCounter, 1)
-		// runtime.Gosched()
 	}
 }
 

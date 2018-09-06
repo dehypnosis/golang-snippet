@@ -76,17 +76,13 @@ func main() {
 func work(label string) {
 	defer wg.Done()
 
-L:
 	for {
 		select {
-		case task, ok := <-taskQueue:
-			if !ok {
-				// close(taskQueue)
-				continue
-			}
+		case task := <-taskQueue:
 			fmt.Println(task, label)
 		default:
-			break L
+			defer close(taskQueue)
+			break
 		}
 	}
 }

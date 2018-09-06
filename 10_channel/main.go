@@ -28,8 +28,8 @@ func ping(ch chan int) {
 	fmt.Println("got", v)
 
 	if v > 100 {
-		wg.Done()
 		close(ch)
+		wg.Done()
 		fmt.Println("pingpong done")
 		return
 	}
