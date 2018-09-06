@@ -52,7 +52,7 @@ func createMockServer() *httptest.Server {
 		w.Header().Set("Content-Type", "text/plain")
 		w.Write([]byte("Hello world!"))
 	}
-	server := httptest.NewServer(http.HandlerFunc(f))
+	server := httptest.NewServer(http.HandlerFunc(f)) // Look this; "handler"Func returns handler
 	println("new mock server", server.URL)
 	return server
 }
@@ -67,7 +67,7 @@ func init() {
 	//defer httpServer.Close()
 
 	// route some enpoint on default http server
-	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) { // Look this; "handle"Func will attach this hanlder
 		w.WriteHeader(200)
 		w.Write([]byte(testEndpointAnswer))
 	})

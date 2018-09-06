@@ -79,6 +79,8 @@ func main() {
 			case <-quit:
 				quit = nil
 				fmt.Println(quit, "quited")
+				// default:
+				// 	println("hey")
 			}
 		}
 	}()
@@ -109,13 +111,13 @@ func main() {
 				}
 			}
 		}()
-		panic("PANICKED!")
+		// panic("PANICKED!")
 
 		// how about fatal?
-		// log.Fatal("what about this?") .. this ignore defer's and call os.Exit
+		// log.Fatal("what about this?") //.. this ignore defer's and call os.Exit
 
 		// how about Panic?
-		// log.Panic("Panicked again..?!") .. call panic and log.Print together
+		// log.Panic("Panicked again..?!") //.. call panic and log.Print together
 	}()
 
 	// rune is int32 for representation of 4byte character (Unicode codepoint)
@@ -142,7 +144,7 @@ hey
 
 	// dynamic slice of map
 	m := []map[interface{}]interface{}{
-		make(map[interface{}]interface{}),
+		map[interface{}]interface{}{},
 	} // m = [{}]
 	m[0][0] = 1
 	m[0]["key"] = "whatthe"
